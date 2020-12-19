@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest {
     public static LoginPage loginPage;
     public static ProfilePage profilePage;
+    public static AdditionalMailPage additionalMailPage;
     public static WebDriver driver;
 
     /**
@@ -24,6 +25,7 @@ public class LoginTest {
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         profilePage = new ProfilePage(driver);
+        additionalMailPage = new AdditionalMailPage(driver);
 
         //окно разворачивается на полный экран
         driver.manage().window().maximize();
@@ -54,6 +56,8 @@ public class LoginTest {
 
         //нажимаем кнопку входа
         loginPage.clickLoginBtn();
+
+        loginPage.clickSkipButton();
 
         //получаем отображаемый логин
         String user = profilePage.getUserName();

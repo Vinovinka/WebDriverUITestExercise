@@ -9,6 +9,7 @@ public class LoginPage {
      * конструктор класса, занимающийся инициализацией полей класса
      */
     public WebDriver driver;
+
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver; }
@@ -31,6 +32,12 @@ public class LoginPage {
     @FindBy(xpath = "//*[contains(@id, 'passp-field-passwd')]")
     private WebElement passwdField;
 
+    @FindBy(xpath = "//*[contains(@id, 'passp-field-additional_email']")
+    private WebElement additionalEmailField;
+
+    @FindBy(xpath = "//*[contains(text(), 'Не сейчас')]/..")
+    private WebElement skipButton;
+
     /**
      * метод для ввода логина
      */
@@ -50,5 +57,9 @@ public class LoginPage {
      */
     public void clickLoginBtn() {
         loginBtn.click();
+    }
+
+    public void clickSkipButton() {
+        skipButton.click();
     }
 }
